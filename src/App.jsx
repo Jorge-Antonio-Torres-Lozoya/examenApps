@@ -1,34 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import coronaImage from './assets/corona.jpg'
+import kongImage from './assets/kong.webp'
+import universoImagen from './assets/universo_kong.jpeg' 
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const getImageForNumber = (num) => {
+    if (num % 3 === 0 && num % 5 === 0) {
+      return [coronaImage, kongImage];
+    } else if (num % 3 === 0) {
+      return coronaImage; 
+    } else if (num % 5 === 0) {
+      return kongImage; 
+    } else {
+      return universoImagen; 
+    }
+  };
+
+  const numeros = Array.from({ length: 30 }, (_, i) => i+1);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    // <div>
+    //   <h2 className='mb-5 ps-5'>Listado del 0 al 30 </h2>
+    //   <ul>
+    //     {numeros.map((num) => (
+    //       <li className='number d-flex gap-3 justify-content-center align-items-center mb-5' key={num}>
+    //       <span>{`#${num}`}</span> 
+    //       {getImageForNumber(num) && (
+    //         <img width={200} src={getImageForNumber(num)} alt={`Imagen para el número ${num}`} />
+    //       )}
+    //     </li>
+    //     ))}
+
+    //   </ul>
+    // </div>
+    <div>
+    <h2 className='mb-5 ps-5'>Listado del 1 al 30 </h2>
+    <ul>
+      {numeros.map((num) => (
+        <li className='number d-flex gap-3 justify-content-center align-items-center mb-5' key={num}>
+          <span>{`#${num}`}</span>
+          {Array.isArray(getImageForNumber(num)) ? ( // Verifica si hay más de una imagen
+            getImageForNumber(num).map((imagen, index) => (
+              <img key={index} width={200} src={imagen} alt={`Imagen para el número ${num}`} />
+            ))
+          ) : (
+            getImageForNumber(num) && (
+              <img width={200} src={getImageForNumber(num)} alt={`Imagen para el número ${num}`} />
+            )
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
   )
 }
 
