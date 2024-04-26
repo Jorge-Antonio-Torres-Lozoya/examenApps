@@ -1,6 +1,9 @@
 import coronaImage from './assets/corona.jpg'
 import kongImage from './assets/kong.webp'
 import universoImagen from './assets/universo_kong.jpeg' 
+import universo2 from './assets/universo2.webp'
+import universo3 from './assets/universo3.jpg'
+
 
 import './App.css'
 
@@ -13,7 +16,9 @@ function App() {
     } else if (num % 5 === 0) {
       return kongImage; 
     } else {
-      return universoImagen; 
+     const images=[universoImagen, universo2,universo3 ];
+     const randomIndex = Math.floor(Math.random() * images.length);
+      return images[randomIndex];
     }
   };
 
