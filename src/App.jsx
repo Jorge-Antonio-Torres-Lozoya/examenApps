@@ -20,20 +20,6 @@ function App() {
   const numeros = Array.from({ length: 30 }, (_, i) => i+1);
 
   return (
-    // <div>
-    //   <h2 className='mb-5 ps-5'>Listado del 0 al 30 </h2>
-    //   <ul>
-    //     {numeros.map((num) => (
-    //       <li className='number d-flex gap-3 justify-content-center align-items-center mb-5' key={num}>
-    //       <span>{`#${num}`}</span> 
-    //       {getImageForNumber(num) && (
-    //         <img width={200} src={getImageForNumber(num)} alt={`Imagen para el número ${num}`} />
-    //       )}
-    //     </li>
-    //     ))}
-
-    //   </ul>
-    // </div>
     <div>
     <h2 className='mb-5 ps-5'>Listado del 1 al 30 </h2>
     <ul>
